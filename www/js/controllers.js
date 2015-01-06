@@ -12,16 +12,22 @@ angular.module('wordguess.controllers', [])
     "clickbait" : ["buzzfeed", "lists", "headline", "link", "clickbaitword"],
     "instagram" : ["picture", "filter", "follow", "like", "vine"]
   }
+  $scope.cards = [];
+  $scope.wordIndex = 0;
 
   $scope.init = function() {
 
+      $scope.words.forEach(function(word){
+        $scope.cards.push({
+          "word" : word,
+          "synonyms" : $scope.synonyms[word]
+        });
+      });
+        
+      console.log($scope.cards);
       $scope.gameInSession = false;
       $scope.turnInSession = false;
       $scope.wordIndex = 0;
-      $scope.card = {
-        "word" : "",
-        "synonyms" : []
-      }
       $scope.teams = {
         "Blue" : {
           "points" : 0,
@@ -42,20 +48,24 @@ angular.module('wordguess.controllers', [])
           "rounds" : []
         }
       }
-      console.log("created teams: ", $scope.teams);
   }
 
-  $scope.revealNextCard = function () {
-    $scope.card.word = $scope.words[$scope.wordIndex];
-    $scope.card.synonyms = $scope.synonyms[$scope.card.word];
-    $scope.wordIndex++;
-  }
 
   $scope.startGame = function() {
-    $scope.revealNextCard();
     $scope.gameInSession = true;
     $scope.turnInSession = true;
   }
+
+  $scope.cardDestroyed = function(index) {
+    $scope.cards.splice(index, 1);
+  };
+
+  $scope.cardSwiped = function(index) {
+    console.log("Card swiped");
+    $scope.wordIndex ++;
+    var newCard = $scope.cards[$scope.wordIndex];
+    //$scope.cards.push(newCard);
+  };
 
 
   $scope.init();

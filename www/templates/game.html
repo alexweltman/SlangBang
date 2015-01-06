@@ -2,14 +2,16 @@
 <button class="button button-block button-balanced" ng-show="!gameInSession" ng-click="startGame()">
   Start Game
 </button>
-<div class="card" ng-show="gameInSession">
-	<div class="item item-divider h1">
-		<div class="bar bar-header bar-calm h1">
-				<h1 class="title">{{ card.word }}</h1>
-		</div>	
+<td-cards ng-show="gameInSession">
+	<td-card class="card" ng-repeat="card in cards" on-destroy="cardDestroyed($index)" on-swipe="cardSwiped($index)">
+		<div class="item item-divider h1">
+			<div class="bar bar-header bar-calm h1">
+					<h1 class="title">{{ cards[wordIndex].word }}</h1>
+			</div>	
 		</div>
-		<div class="item" ng-repeat="synonym in card.synonyms">
-    {{ synonym }}
-  </div>
-</div>
+		<div class="item" ng-repeat="synonym in cards[wordIndex].synonyms">
+	    	{{ synonym }}
+	    </div>
+    </td-card>
+</td-cards>
 </ion-content>
