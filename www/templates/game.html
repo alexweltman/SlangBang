@@ -1,17 +1,23 @@
 <ion-content>
-<button class="button button-block button-balanced" ng-show="!gameInSession" ng-click="startGame()">
+<button class="button button-block button-balanced" ng-if="!gameInSession" ng-click="startGame()">
   Start Game
 </button>
-<td-cards ng-show="gameInSession">
-	<td-card class="card" ng-repeat="card in cards" on-destroy="cardDestroyed($index)" on-swipe="cardSwiped($index)">
-		<div class="item item-divider h1">
-			<div class="bar bar-header bar-calm h1">
-					<h1 class="title">{{ cards[wordIndex].word }}</h1>
-			</div>	
-		</div>
-		<div class="item" ng-repeat="synonym in cards[wordIndex].synonyms">
-	    	{{ synonym }}
-	    </div>
-    </td-card>
-</td-cards>
+	<td-cards ng-if="gameInSession">
+    	<td-card id="td-card" ng-repeat="card in cards" on-destroy="cardDestroyed($index)"
+              on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)"
+              on-partial-swipe="cardPartialSwipe(amt)">
+				<div class="item item-divider h1">
+					<div class="bar bar-header bar-calm h1">
+							{{ card.word }}
+					</div>	
+				</div>
+                  <div class="image">
+                      <div class="no-text overlayBox"><div class="noBox boxed">Wrong</div></div>
+                      <div class="item" ng-repeat="synonym in card.synonyms">
+	    				{{ synonym }}
+	    			</div>
+                      <div class="yes-text overlayBox"><div class="yesBox boxed" id="centerMe">Got It!</div></div>
+                  </div>
+    	</td-card>
+    </td-cards>
 </ion-content>
