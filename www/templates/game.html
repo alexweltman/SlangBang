@@ -6,18 +6,14 @@
     	<td-card id="td-card" ng-repeat="card in cards" on-destroy="cardDestroyed($index)"
               on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)"
               on-partial-swipe="cardPartialSwipe(amt)">
-				<div class="item item-divider h1">
-					<div class="bar bar-header bar-calm h1">
-							{{ card.word }}
-					</div>	
-				</div>
-                  <div class="image">
-                      <div class="no-text overlayBox"><div class="noBox boxed">Wrong</div></div>
-                      <div class="item" ng-repeat="synonym in card.synonyms">
-	    				{{ synonym }}
-	    			</div>
-                      <div class="yes-text overlayBox"><div class="yesBox boxed" id="centerMe">Got It!</div></div>
-                  </div>
+			<div class="bar bar-header bar-calm h1">
+					{{ card.word }}
+			</div>	
+      <div class="no-text overlayBox"><div class="noBox boxed">Skip</div></div>
+      <div class="synonyms">
+        <div class="item" ng-repeat="synonym in card.synonyms">{{ synonym }}</div>
+      </div>
+      <div class="yes-text overlayBox"><div class="yesBox boxed" id="centerMe">Yup!</div></div>
     	</td-card>
     </td-cards>
 </ion-content>
