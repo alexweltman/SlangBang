@@ -10,8 +10,9 @@ angular.module('wordguess.controllers', ['ionic', 'ionic.contrib.ui.tinderCards'
   $scope.synonyms = {
     "selfie" : ["camera", "picture", "instagram", "just let me take a", "chainsmokers"],
     "hashtag" : ["twitter", "pound sign", "selfie", "throw back thursday", "winning"],
-    "clickbait" : ["buzzfeed", "lists", "headline", "link", "clickbaitword"],
-    "instagram" : ["picture", "filter", "follow", "like", "vine"]
+    "clickbait" : ["buzzfeed", "lists", "headline", "link", ""],
+    "instagram" : ["picture", "filter", "follow", "like", "vine"],
+    "millenial" : ["twentysomething", "teenager", "1990s", "lazy", "snapchat"]
   }
   $scope.cards = [];
   $scope.wordIndex = 0;
