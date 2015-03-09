@@ -26,7 +26,6 @@ angular.module('wordguess.controllers', ['ionic', 'ionic.contrib.ui.tinderCards'
         });
       });
         
-      console.log($scope.cards);
       $scope.gameInSession = false;
       $scope.turnInSession = false;
       $scope.teams = {

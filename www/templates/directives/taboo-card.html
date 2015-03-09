@@ -1,0 +1,11 @@
+<td-card id="td-card" on-destroy="cardDestroyed($index)"
+        on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)">
+<div class="bar bar-header bar-calm h1">
+    {{ card.word }}
+</div>  
+<div class="no-text overlayBox"><div class="noBox boxed">Skip</div></div>
+<div class="synonyms">
+  <div class="item" ng-repeat="synonym in card.synonyms">{{ synonym }}</div>
+</div>
+<div class="yes-text overlayBox"><div class="yesBox boxed" id="centerMe">Yup!</div></div>
+</td-card>
