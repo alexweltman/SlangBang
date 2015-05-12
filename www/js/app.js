@@ -28,6 +28,14 @@ angular.module('wordguess', ['ngRoute', 'wordguess.directives', 'wordguess.contr
     templateUrl: "templates/menu.html",
     controller: 'AppCtrl'
   }).
+  when('/app/roundStart', {
+    templateUrl: "templates/roundStart.html",
+    controller: 'GameCtrl'
+  }).
+  when('/app/gameSetup', {
+    templateUrl: "templates/gameSetup.html",
+    controller: "GameSetupCtrl"
+  }).
   when('/app/game', {
       templateUrl: "templates/game.html",
       controller: 'GameCtrl'
@@ -35,23 +43,4 @@ angular.module('wordguess', ['ngRoute', 'wordguess.directives', 'wordguess.contr
   otherwise({
     redirectTo: '/app'
   });
-  // if none of the above states are matched, use this as the fallback
 }]);
-
-/*
-phonecatApp.config(['$routeProvider',
-  function($routeProvider) {
-    $routeProvider.
-      when('/phones', {
-        templateUrl: 'partials/phone-list.html',
-        controller: 'PhoneListCtrl'
-      }).
-      when('/phones/:phoneId', {
-        templateUrl: 'partials/phone-detail.html',
-        controller: 'PhoneDetailCtrl'
-      }).
-      otherwise({
-        redirectTo: '/phones'
-      });
-  }]);
-  */

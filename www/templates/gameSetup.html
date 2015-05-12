@@ -1,0 +1,14 @@
+<ion-content>
+<h1>Game Setup</h1>
+<div class="card" ng-repeat="team in teams">
+  <div class="item item-divider">
+    <label class="item item-input">
+    	<input type="text" placeholder="Team {{$index+1}} Name" style="font-size:20px; font-weight:bold" ng-model="teams[$index]">
+  	</label>
+  </div>
+  <div class="item item-text-wrap" ng-repeat="player in players[$index]">
+    	<input type="text" placeholder="Player {{$index+1}}" style="height: 20px" ng-model="players[$parent.$index][$index]">
+  </div>
+</div><!-- end card -->
+<button ng-click="logData();">Click</button>
+</ion-content>
