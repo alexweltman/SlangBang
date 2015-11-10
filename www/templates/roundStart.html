@@ -1,9 +1,12 @@
 <ion-content>
 <div class="row">
-  <div class="col" ng-repeat="teamName in teams">{{teamName}}</div>
+  <div class="col" ng-repeat="teamName in teams track by $index">{{teamName}}</div>
 </div>
 <div class="row" ng-repeat="team in teams">
   <div class="col" ng-repeat="team in teams"></div>
   <div class="col">{{round[team]}}</div>
 </div>
 </ion-content>
+<a class="button button-positive fixed-outside" href="/#/app/game">
+  Start
+</a>

@@ -30,7 +30,7 @@ angular.module('wordguess', ['ngRoute', 'wordguess.directives', 'wordguess.contr
   }).
   when('/app/roundStart', {
     templateUrl: "templates/roundStart.html",
-    controller: 'GameCtrl'
+    controller: 'GameSetupCtrl'
   }).
   when('/app/gameSetup', {
     templateUrl: "templates/gameSetup.html",

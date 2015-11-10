@@ -1,14 +1,34 @@
 <ion-content>
-<h1>Game Setup</h1>
-<div class="card" ng-repeat="team in teams">
-  <div class="item item-divider">
-    <label class="item item-input">
+<div class="row">
+	<h1 class="col col-67">Game Setup</h1>
+	<!--<i class="bigicon ion-plus-circled" ng-click="addTeam();" class="col col-90 col-bottom"></i>-->
+	<i class="bigicon ion-edit col col-20 col-offset-20 col-center" ng-click="edit();" ng-if="!editing"></i>
+	<i class="bigicon ion-checkmark-circled col col-20 col-offset-20 col-center" ng-click="edit();" ng-if="editing"></i>
+</div>
+<div class="card" ng-repeat="team in teams track by $index" class="animate">
+  <div class="item item-divider row">
+    <label class="item item-input col col-70">
     	<input type="text" placeholder="Team {{$index+1}} Name" style="font-size:20px; font-weight:bold" ng-model="teams[$index]">
-  	</label>
+    	  	</label>
+
+    	<i class="bigicon ion-plus-circled" ng-if="!editing" class="button button-positive" ng-click="addPlayer($index);"></i>
+    	<i class="bigicon ion-minus-circled" ng-if="editing && $index > 1" class="button button-assertive" ng-click="removeTeam($index);"></i>
   </div>
-  <div class="item item-text-wrap" ng-repeat="player in players[$index]">
-    	<input type="text" placeholder="Player {{$index+1}}" style="height: 20px" ng-model="players[$parent.$index][$index]">
+  <div class="item item-text-wrap row nameInput" ng-repeat="player in players[$index] track by $index">
+    	<input type="text" class="col col-90" placeholder="Player {{$index+1}}" style="height: 20px" ng-model="players[$parent.$index][$index]">
+    	<i ng-if="editing && $index > 1" class="ion-close col col-10" ng-click="removePlayer($parent.$parent.$index, $index)"></i>
   </div>
 </div><!-- end card -->
-<button ng-click="logData();">Click</button>
+
+<div class="row" ng-if="teams.length === 2">
+	<div class="col col-33 col-offset-67">
+		<button class="button button-stable" ng-click="addTeam()">
+			Add Team
+		</button>
+	</div>
+</div>
+
 </ion-content>
+	<a class="button button-positive fixed-outside" href="/#/app/game">
+	  Start
+	</a>
